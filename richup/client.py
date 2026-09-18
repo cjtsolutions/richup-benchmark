@@ -14,7 +14,8 @@ import json
 import logging
 import time
 from collections import deque
-from typing import Any, Awaitable, Callable
+from collections.abc import Awaitable, Callable
+from typing import Any, Self
 
 import httpx
 import socketio
@@ -118,7 +119,7 @@ class RichUpClient:
             f"{c.name}={c.value}" for c in self.http.cookies.jar
         )
 
-    async def __aenter__(self) -> "RichUpClient":
+    async def __aenter__(self) -> Self:
         await self.init_session()
         return self
 
@@ -201,7 +202,7 @@ class RichUpClient:
             if self._room_id is not None:
                 try:
                     await self.enter_room(self._room_id)
-                except Exception as e:  # noqa: BLE001
+                except Exception as e:
                     log.warning("re-enter-room failed: %s", e)
 
         @sio.on("disconnect", namespace=ev.NS_GAME)
@@ -263,7 +264,7 @@ class RichUpClient:
             try:
                 if sio.connected:
                     await sio.disconnect()
-            except Exception:  # noqa: BLE001
+            except Exception:
                 pass
         await self.http.aclose()
 
@@ -306,7 +307,7 @@ class RichUpClient:
         elif event == ev.GAME_STARTED:
             self.game_started.set()
             self.game_ended.clear()
-            asyncio.ensure_future(self._calibrate_clock())
+            asyncio.ensure_future(self._calibrate_clock())  # noqa: RUF006
             if self.room is not None:
                 self.room["phase"] = "playing"
             order = data.get("participantsOrder") if isinstance(data, dict) else None
@@ -342,9 +343,11 @@ class RichUpClient:
                 self._merge_room(data)
 
         for fn in self._handlers.get(event, []):
-            asyncio.ensure_future(self._safe(fn, data))
+            asyncio.ensure_future(self._safe(fn, data))  # noqa: RUF006
         for fn in self._handlers.get("*", []):
-            asyncio.ensure_future(self._safe(fn, {"event": event, "data": data}))
+            asyncio.ensure_future(  # noqa: RUF006
+                self._safe(fn, {"event": event, "data": data})
+            )
 
         if self.auto_sync and event in _STATE_CHANGE_EVENTS:
             self._schedule_sync()
@@ -352,7 +355,7 @@ class RichUpClient:
     async def _calibrate_clock(self) -> None:
         try:
             await self.request_server_time()
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             log.debug("clock calibration failed: %s", e)
 
     # --------------------------------------------------------------- syncing
@@ -364,7 +367,7 @@ class RichUpClient:
         await asyncio.sleep(0.4)  # collapse bursts (e.g. a full turn)
         try:
             await self._act(ev.REQUEST_SYNC, {"snapshot": ""})
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             log.debug("auto-sync failed: %s", e)
 
     async def sync(self, timeout: float = 10.0) -> dict | None:
@@ -381,7 +384,7 @@ class RichUpClient:
     async def _safe(self, fn: EventHandler, data: Any) -> None:
         try:
             await fn(data)
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             log.warning("handler error for %s: %s", fn, e)
 
     def _index_participants(self) -> None:
@@ -416,8 +419,10 @@ class RichUpClient:
                 event, data if data is not None else {},
                 namespace=ev.NS_GAME, timeout=timeout,
             )
-        except socketio.exceptions.TimeoutError:
-            raise ActionError("ACK_TIMEOUT", f"no ack for {event!r} within {timeout}s", event)
+        except socketio.exceptions.TimeoutError as err:
+            raise ActionError(
+                "ACK_TIMEOUT", f"no ack for {event!r} within {timeout}s", event
+            ) from err
         # python-socketio returns the first ack arg (or tuple of args)
         payload = ack[0] if isinstance(ack, tuple) and ack else ack
         if isinstance(payload, dict):
@@ -438,7 +443,7 @@ class RichUpClient:
         # entered-room event usually arrives alongside/just after
         try:
             await asyncio.wait_for(self._in_room.wait(), timeout=5)
-        except asyncio.TimeoutError:
+        except TimeoutError:
             pass
         return ack
 

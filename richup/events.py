@@ -99,13 +99,13 @@ SET_TRADE_CREATOR_STATE = "set-trade-creator-state"  # emit {isCreating}
 TRADE_CREATOR_CHANGED = "trade-creator-changed"      # {playerId, isCreating}
 
 # ---- chat / admin -------------------------------------------------------------
-CHAT_SEND_MESSAGE = "chat:send-message"            # emit {content}
+CHAT_SEND_MESSAGE = "chat:send-message"            # emit raw string (SPA verified: sendMessage(t) -> rr(e,oY,t))
 CHAT_MESSAGE_RECEIVED = "chat:message-received"    # on {senderId, content}
 CHAT_TYPING = "chat:typing"                        # emit
 CHAT_PARTICIPANT_TYPING = "chat:participant-typing"
-CHAT_SEND_TEAM_MESSAGE = "chat:send-team-message"
+CHAT_SEND_TEAM_MESSAGE = "chat:send-team-message"      # emit raw string
 CHAT_TEAM_MESSAGE_RECEIVED = "chat:team-message-received"
-CHAT_SEND_ADMIN_MESSAGE = "chat:send-admin-message"
+CHAT_SEND_ADMIN_MESSAGE = "chat:send-admin-message"    # emit raw string
 CHAT_ADMIN_MESSAGE_RECEIVED = "chat:admin-message-received"
 ADMIN_KICK_PARTICIPANT = "admin:kick-participant"  # emit {participantId, reason}
 ADMIN_KICKED_PARTICIPANT = "admin:kicked-participant"

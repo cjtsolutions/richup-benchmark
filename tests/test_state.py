@@ -9,11 +9,14 @@ import sys
 from pathlib import Path
 from unittest.mock import MagicMock
 
+import richup.events as ev
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from richup import state as st  # noqa: E402
+from richup import state as st
 
-GS = json.load(open(Path(__file__).parent / "sample_game_state.json"))["gameState"]
+with open(Path(__file__).parent / "sample_game_state.json") as _fh:
+    GS = json.load(_fh)["gameState"]
 
 
 def _client(phase="playing", self_id=None):
@@ -102,6 +105,91 @@ def test_render_smoke():
     assert "phase=playing" in txt
     assert "board:" in txt
     assert "actions:" in txt
+
+
+def test_available_actions_trade_responses():
+    from richup.state import available_actions
+    c = _client()
+    me_id = c.self_player_id
+    other_id = next(p["id"] for p in GS["participants"] if p["id"] != me_id)
+    GS["trades"] = []
+    acts = available_actions(c)
+    assert "confirm_trade" not in acts
+    assert "decline_trade" not in acts
+    assert "delete_trade" not in acts
+    GS["trades"] = [{"id": "t1", "initiatorId": other_id, "recipientId": me_id}]
+    acts = available_actions(c)
+    assert "confirm_trade" in acts
+    assert "decline_trade" in acts
+    assert "delete_trade" not in acts
+    GS["trades"] = [{"id": "t2", "initiatorId": me_id, "recipientId": other_id}]
+    acts = available_actions(c)
+    assert "delete_trade" in acts
+    assert "confirm_trade" not in acts
+    GS["trades"] = []
+
+
+def test_available_actions_bankrupt():
+    from richup.state import available_actions
+    c = _client()
+    me_id = c.self_player_id
+    for p in GS["participants"]:
+        if p["id"] == me_id:
+            p["debtTo"] = "some-creditor-id"
+    acts = available_actions(c)
+    assert "bankrupt" in acts
+    for p in GS["participants"]:
+        if p["id"] == me_id:
+            p.pop("debtTo", None)
+
+
+def test_available_actions_votekick():
+    from richup.state import available_actions
+    c = _client()
+    acts = available_actions(c)
+    assert "votekick" in acts
+
+
+def test_available_actions_grant_clock():
+    from richup.state import available_actions
+    c = _client()
+    me_id = c.self_player_id
+    other_id = next(p["id"] for p in GS["participants"] if p["id"] != me_id)
+    c.events.append({"t": 1000, "event": ev.CLOCK_TIME_REQUESTED, "data": {"playerId": other_id}})
+    acts = available_actions(c)
+    assert "grant_clock_time" in acts
+    c.events.clear()
+    c.events.append({"t": 1000, "event": ev.CLOCK_TIME_REQUESTED, "data": {"playerId": me_id}})
+    acts = available_actions(c)
+    assert "grant_clock_time" not in acts
+
+
+def test_score_trace_smoke():
+    import json
+    import sys
+    import tempfile
+    trace = [
+        {"t": 0, "kind": "joined", "data": {"room_id": "test-room", "player_id": "p1"}},
+        {"t": 1, "kind": "observation", "data": {"players": [{"id": "p1", "money": 1500}], "blocks": []}},
+        {"t": 2, "kind": "action", "data": {"action": "roll_dice", "args": {}, "result": {"ok": True}}},
+        {"t": 3, "kind": "action", "data": {"action": "end_turn", "args": {}, "result": {"ok": True}}},
+        {"t": 4, "kind": "ended", "data": {"winner_id": "p1"}},
+    ]
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".jsonl", delete=False) as f:
+        for rec in trace:
+            f.write(json.dumps(rec) + "\n")
+        tp = f.name
+    try:
+        sys.path.insert(0, "scripts")
+        from score_trace import load_trace, score_trace
+        recs = load_trace(tp)
+        result = score_trace(recs)
+        assert result["won"] is True
+        assert result["room_id"] == "test-room"
+        assert result["steps"] == 2
+        assert result["action_ok_pct"] == 100.0
+    finally:
+        Path(tp).unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
