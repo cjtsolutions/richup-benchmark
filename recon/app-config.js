@@ -1,0 +1,1 @@
+window.__RICHUP_CONFIG__={"posthogKey":"phc_cEISZ0UmckZPf3XXYBpnhKx5AzVrayKcXyihellTMsW"};

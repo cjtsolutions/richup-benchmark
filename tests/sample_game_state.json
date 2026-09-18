@@ -1,0 +1,1190 @@
+{
+ "gameState": {
+  "id": "2orcf",
+  "phase": "playing",
+  "participants": [
+   {
+    "id": "594415a1-543f-4e06-ba20-86b6d859258e",
+    "name": "SyncBot",
+    "appearance": "#5A99DA",
+    "isBot": false,
+    "teamId": null,
+    "position": 0,
+    "money": 1500,
+    "bankruptedAt": null,
+    "debtTo": null,
+    "connectivity": "stable",
+    "connectivityKickAt": null,
+    "offlineSince": null,
+    "timedVotekickAt": null,
+    "votekickedAt": null,
+    "clock": {
+     "bankMs": 60000,
+     "autoActedTurns": 0,
+     "turnsTaken": 0,
+     "lastGrantTurnFrom": {}
+    }
+   },
+   {
+    "id": "0a507fc8-3f3a-4373-8276-bafed83f5c32",
+    "name": "Mature Attack",
+    "appearance": "#009688",
+    "isBot": true,
+    "teamId": null,
+    "position": 0,
+    "money": 1500,
+    "bankruptedAt": null,
+    "debtTo": null,
+    "connectivity": "stable",
+    "connectivityKickAt": null,
+    "offlineSince": null,
+    "timedVotekickAt": null,
+    "votekickedAt": null,
+    "clock": {
+     "bankMs": 60000,
+     "autoActedTurns": 0,
+     "turnsTaken": 0,
+     "lastGrantTurnFrom": {}
+    }
+   },
+   {
+    "id": "b882a258-193d-4c18-99c4-1dd7667e4d64",
+    "name": "Decent Taste",
+    "appearance": "#C63FA2",
+    "isBot": true,
+    "teamId": null,
+    "position": 0,
+    "money": 1500,
+    "bankruptedAt": null,
+    "debtTo": null,
+    "connectivity": "stable",
+    "connectivityKickAt": null,
+    "offlineSince": null,
+    "timedVotekickAt": null,
+    "votekickedAt": null,
+    "clock": {
+     "bankMs": 60000,
+     "autoActedTurns": 0,
+     "turnsTaken": 0,
+     "lastGrantTurnFrom": {}
+    }
+   },
+   {
+    "id": "602ee55f-caac-4886-a85e-df60cd34ebb2",
+    "name": "Fair Cold",
+    "appearance": "#7F5ADA",
+    "isBot": true,
+    "teamId": null,
+    "position": 0,
+    "money": 1500,
+    "bankruptedAt": null,
+    "debtTo": null,
+    "connectivity": "stable",
+    "connectivityKickAt": null,
+    "offlineSince": null,
+    "timedVotekickAt": null,
+    "votekickedAt": null,
+    "clock": {
+     "bankMs": 60000,
+     "autoActedTurns": 0,
+     "turnsTaken": 0,
+     "lastGrantTurnFrom": {}
+    }
+   }
+  ],
+  "currentPlayerIndex": 0,
+  "mapId": "classic",
+  "blocks": [
+   {
+    "name": "Start",
+    "type": "corner",
+    "cornerType": "go"
+   },
+   {
+    "name": "Salvador",
+    "type": "city",
+    "price": 60,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "brazil",
+    "rentPrices": {
+     "0": 2,
+     "1": 10,
+     "2": 30,
+     "3": 90,
+     "4": 150,
+     "5": 240
+    },
+    "level": 0,
+    "housePrice": 50,
+    "hotelPrice": 50
+   },
+   {
+    "name": "Treasure",
+    "type": "bonus",
+    "bonusType": "treasure"
+   },
+   {
+    "name": "Rio",
+    "type": "city",
+    "price": 60,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "brazil",
+    "rentPrices": {
+     "0": 4,
+     "1": 20,
+     "2": 60,
+     "3": 190,
+     "4": 330,
+     "5": 460
+    },
+    "level": 0,
+    "housePrice": 50,
+    "hotelPrice": 50
+   },
+   {
+    "name": "Earnings Tax",
+    "type": "bonus",
+    "bonusType": "tax",
+    "taxPercentage": 10
+   },
+   {
+    "name": "TLV Airport",
+    "type": "airport",
+    "price": 200,
+    "ownerId": null,
+    "isMortgaged": false,
+    "rentPrices": [
+     25,
+     50,
+     100,
+     200
+    ]
+   },
+   {
+    "name": "Tel Aviv",
+    "type": "city",
+    "price": 100,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "israel",
+    "rentPrices": {
+     "0": 6,
+     "1": 30,
+     "2": 90,
+     "3": 260,
+     "4": 380,
+     "5": 540
+    },
+    "level": 0,
+    "housePrice": 50,
+    "hotelPrice": 50
+   },
+   {
+    "name": "Haifa",
+    "type": "city",
+    "price": 110,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "israel",
+    "rentPrices": {
+     "0": 6,
+     "1": 30,
+     "2": 90,
+     "3": 280,
+     "4": 400,
+     "5": 560
+    },
+    "level": 0,
+    "housePrice": 50,
+    "hotelPrice": 50
+   },
+   {
+    "name": "Surprise",
+    "type": "bonus",
+    "bonusType": "surprise"
+   },
+   {
+    "name": "Jerusalem",
+    "type": "city",
+    "price": 120,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "israel",
+    "rentPrices": {
+     "0": 8,
+     "1": 40,
+     "2": 110,
+     "3": 300,
+     "4": 460,
+     "5": 610
+    },
+    "level": 0,
+    "housePrice": 50,
+    "hotelPrice": 50
+   },
+   {
+    "name": "Prison",
+    "type": "corner",
+    "cornerType": "prison",
+    "suspendedTurnsRemaining": {},
+    "suspensionAmount": 3
+   },
+   {
+    "name": "Venice",
+    "type": "city",
+    "price": 130,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "italy",
+    "rentPrices": {
+     "0": 10,
+     "1": 50,
+     "2": 140,
+     "3": 440,
+     "4": 600,
+     "5": 740
+    },
+    "level": 0,
+    "housePrice": 100,
+    "hotelPrice": 100
+   },
+   {
+    "name": "Power Company",
+    "type": "company",
+    "price": 150,
+    "ownerId": null,
+    "isMortgaged": false,
+    "companyType": "electricity"
+   },
+   {
+    "name": "Milan",
+    "type": "city",
+    "price": 140,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "italy",
+    "rentPrices": {
+     "0": 10,
+     "1": 50,
+     "2": 160,
+     "3": 460,
+     "4": 630,
+     "5": 760
+    },
+    "level": 0,
+    "housePrice": 100,
+    "hotelPrice": 100
+   },
+   {
+    "name": "Rome",
+    "type": "city",
+    "price": 160,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "italy",
+    "rentPrices": {
+     "0": 12,
+     "1": 60,
+     "2": 180,
+     "3": 500,
+     "4": 700,
+     "5": 900
+    },
+    "level": 0,
+    "housePrice": 100,
+    "hotelPrice": 100
+   },
+   {
+    "name": "MUC Airport",
+    "type": "airport",
+    "price": 200,
+    "ownerId": null,
+    "isMortgaged": false,
+    "rentPrices": [
+     25,
+     50,
+     100,
+     200
+    ]
+   },
+   {
+    "name": "Frankfurt",
+    "type": "city",
+    "price": 180,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "germany",
+    "rentPrices": {
+     "0": 14,
+     "1": 70,
+     "2": 190,
+     "3": 540,
+     "4": 760,
+     "5": 950
+    },
+    "level": 0,
+    "housePrice": 100,
+    "hotelPrice": 100
+   },
+   {
+    "name": "Treasure",
+    "type": "bonus",
+    "bonusType": "treasure"
+   },
+   {
+    "name": "Munich",
+    "type": "city",
+    "price": 190,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "germany",
+    "rentPrices": {
+     "0": 15,
+     "1": 70,
+     "2": 210,
+     "3": 560,
+     "4": 760,
+     "5": 960
+    },
+    "level": 0,
+    "housePrice": 100,
+    "hotelPrice": 100
+   },
+   {
+    "name": "Berlin",
+    "type": "city",
+    "price": 200,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "germany",
+    "rentPrices": {
+     "0": 15,
+     "1": 80,
+     "2": 220,
+     "3": 600,
+     "4": 780,
+     "5": 1000
+    },
+    "level": 0,
+    "housePrice": 100,
+    "hotelPrice": 100
+   },
+   {
+    "name": "Vacation",
+    "type": "corner",
+    "cornerType": "vacation",
+    "suspendedTurnsRemaining": {},
+    "suspensionAmount": 1
+   },
+   {
+    "name": "Shenzhen",
+    "type": "city",
+    "price": 210,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "china",
+    "rentPrices": {
+     "0": 18,
+     "1": 90,
+     "2": 240,
+     "3": 680,
+     "4": 850,
+     "5": 1000
+    },
+    "level": 0,
+    "housePrice": 150,
+    "hotelPrice": 150
+   },
+   {
+    "name": "Surprise",
+    "type": "bonus",
+    "bonusType": "surprise"
+   },
+   {
+    "name": "Beijing",
+    "type": "city",
+    "price": 220,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "china",
+    "rentPrices": {
+     "0": 20,
+     "1": 90,
+     "2": 260,
+     "3": 710,
+     "4": 900,
+     "5": 1100
+    },
+    "level": 0,
+    "housePrice": 150,
+    "hotelPrice": 150
+   },
+   {
+    "name": "Shanghai",
+    "type": "city",
+    "price": 240,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "china",
+    "rentPrices": {
+     "0": 20,
+     "1": 100,
+     "2": 290,
+     "3": 740,
+     "4": 920,
+     "5": 1100
+    },
+    "level": 0,
+    "housePrice": 150,
+    "hotelPrice": 150
+   },
+   {
+    "name": "CDG Airport",
+    "type": "airport",
+    "price": 200,
+    "ownerId": null,
+    "isMortgaged": false,
+    "rentPrices": [
+     25,
+     50,
+     100,
+     200
+    ]
+   },
+   {
+    "name": "Lyon",
+    "type": "city",
+    "price": 260,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "france",
+    "rentPrices": {
+     "0": 20,
+     "1": 100,
+     "2": 320,
+     "3": 800,
+     "4": 950,
+     "5": 1100
+    },
+    "level": 0,
+    "housePrice": 150,
+    "hotelPrice": 150
+   },
+   {
+    "name": "Water Company",
+    "type": "company",
+    "price": 150,
+    "ownerId": null,
+    "isMortgaged": false,
+    "companyType": "water"
+   },
+   {
+    "name": "Toulouse",
+    "type": "city",
+    "price": 270,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "france",
+    "rentPrices": {
+     "0": 20,
+     "1": 120,
+     "2": 350,
+     "3": 825,
+     "4": 1000,
+     "5": 1150
+    },
+    "level": 0,
+    "housePrice": 150,
+    "hotelPrice": 150
+   },
+   {
+    "name": "Paris",
+    "type": "city",
+    "price": 280,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "france",
+    "rentPrices": {
+     "0": 25,
+     "1": 120,
+     "2": 350,
+     "3": 850,
+     "4": 1000,
+     "5": 1200
+    },
+    "level": 0,
+    "housePrice": 150,
+    "hotelPrice": 150
+   },
+   {
+    "name": "Go to prison",
+    "type": "corner",
+    "cornerType": "go-to-prison"
+   },
+   {
+    "name": "Liverpool",
+    "type": "city",
+    "price": 290,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "united-kingdom",
+    "rentPrices": {
+     "0": 25,
+     "1": 120,
+     "2": 380,
+     "3": 850,
+     "4": 1050,
+     "5": 1250
+    },
+    "level": 0,
+    "housePrice": 200,
+    "hotelPrice": 200
+   },
+   {
+    "name": "Manchester",
+    "type": "city",
+    "price": 300,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "united-kingdom",
+    "rentPrices": {
+     "0": 26,
+     "1": 140,
+     "2": 400,
+     "3": 950,
+     "4": 1150,
+     "5": 1300
+    },
+    "level": 0,
+    "housePrice": 200,
+    "hotelPrice": 200
+   },
+   {
+    "name": "Treasure",
+    "type": "bonus",
+    "bonusType": "treasure"
+   },
+   {
+    "name": "London",
+    "type": "city",
+    "price": 320,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "united-kingdom",
+    "rentPrices": {
+     "0": 30,
+     "1": 140,
+     "2": 440,
+     "3": 1000,
+     "4": 1200,
+     "5": 1400
+    },
+    "level": 0,
+    "housePrice": 200,
+    "hotelPrice": 200
+   },
+   {
+    "name": "JFK Airport",
+    "type": "airport",
+    "price": 200,
+    "ownerId": null,
+    "isMortgaged": false,
+    "rentPrices": [
+     25,
+     50,
+     100,
+     200
+    ]
+   },
+   {
+    "name": "Surprise",
+    "type": "bonus",
+    "bonusType": "surprise"
+   },
+   {
+    "name": "San Francisco",
+    "type": "city",
+    "price": 360,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "united-states-of-america",
+    "rentPrices": {
+     "0": 35,
+     "1": 180,
+     "2": 550,
+     "3": 1150,
+     "4": 1350,
+     "5": 1525
+    },
+    "level": 0,
+    "housePrice": 200,
+    "hotelPrice": 200
+   },
+   {
+    "name": "Premium Tax",
+    "type": "bonus",
+    "bonusType": "premium-tax",
+    "taxAmount": 75
+   },
+   {
+    "name": "New York",
+    "type": "city",
+    "price": 400,
+    "ownerId": null,
+    "isMortgaged": false,
+    "countryId": "united-states-of-america",
+    "rentPrices": {
+     "0": 50,
+     "1": 200,
+     "2": 600,
+     "3": 1400,
+     "4": 1700,
+     "5": 2000
+    },
+    "level": 0,
+    "housePrice": 200,
+    "hotelPrice": 200
+   }
+  ],
+  "boardConfig": {
+   "goReward": {
+    "land": 300,
+    "pass": 200
+   },
+   "prisonBlockIndex": 10,
+   "goToPrisonBlockIndex": 30,
+   "vacationBlockIndex": 20
+  },
+  "dice": [
+   1,
+   1
+  ],
+  "cubesRolledInTurn": false,
+  "canPerformTurnActions": false,
+  "doublesInARow": 0,
+  "forceNoAnotherTurn": false,
+  "teams": [],
+  "votekickerIds": [],
+  "turnClock": {
+   "config": {
+    "graceMs": 20000,
+    "debtGraceMs": 60000,
+    "bankStartMs": 60000,
+    "bankMaxMs": 180000,
+    "minRefillMs": 6000,
+    "maxRefillMs": 20000,
+    "grantMs": 60000,
+    "grantCapPerTurnMs": 120000,
+    "grantCooldownTurns": 1,
+    "removalAfterAutoActedTurns": 2
+   },
+   "turn": {
+    "turnStartedAt": 1789759858079,
+    "grantedMs": 0,
+    "grantedWhileOfflineMs": 0,
+    "pausedMs": 0,
+    "offlineMs": 0,
+    "auctionPausedAt": null,
+    "autoActing": false,
+    "selfActed": false,
+    "debtGraceLatched": false
+   },
+   "hostKickEligible": false
+  },
+  "auction": null,
+  "trades": [],
+  "tradeCreatorIds": [],
+  "bonusCards": {
+   "treasure": {
+    "cards": [
+     {
+      "description": "Your phone died. Pay $50 for a repair.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "pay",
+       "amount": 50
+      },
+      "id": "treasure-0"
+     },
+     {
+      "description": "You have won third prize in a lottery. Collect $15.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 15
+      },
+      "id": "treasure-1"
+     },
+     {
+      "description": "From gift cards you get $100.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 100
+      },
+      "id": "treasure-2"
+     },
+     {
+      "description": "Your car has ran out of gas. Pay $50.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "pay",
+       "amount": 50
+      },
+      "id": "treasure-3"
+     },
+     {
+      "description": "Car rental insurance. Pay $60.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "pay",
+       "amount": 60
+      },
+      "id": "treasure-4"
+     },
+     {
+      "description": "Received a Pardon card.",
+      "effect": {
+       "type": "get-pardon-card",
+       "deck": "treasure"
+      },
+      "id": "treasure-5"
+     },
+     {
+      "description": "Tax refund. Collect $100.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 100
+      },
+      "id": "treasure-6"
+     },
+     {
+      "description": "Advance to Start.",
+      "effect": {
+       "type": "move-to-block",
+       "blockIndex": 0,
+       "collectGo": true
+      },
+      "id": "treasure-7"
+     },
+     {
+      "description": "You host a party. Collect $50 from every player for equipment.",
+      "effect": {
+       "type": "collect-from-each-player",
+       "amount": 50
+      },
+      "id": "treasure-8"
+     },
+     {
+      "description": "From trading stocks you earned $50.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 50
+      },
+      "id": "treasure-9"
+     },
+     {
+      "description": "Beneficial business decisions. You made a profit of $25.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 25
+      },
+      "id": "treasure-10"
+     },
+     {
+      "description": "Happy holidays! Receive $20.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 20
+      },
+      "id": "treasure-11"
+     },
+     {
+      "description": "Happy birthday! Collect $10 from every player.",
+      "effect": {
+       "type": "collect-from-each-player",
+       "amount": 10
+      },
+      "id": "treasure-12"
+     },
+     {
+      "description": "It's time to renovate your properties. Pay $30 per house and $120 per hotel you own.",
+      "effect": {
+       "type": "repairs",
+       "perHouse": 30,
+       "perHotel": 120
+      },
+      "id": "treasure-13"
+     },
+     {
+      "description": "You received $100 from your sibling.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 100
+      },
+      "id": "treasure-14"
+     },
+     {
+      "description": "You found a wallet containing some cash. Collect $200.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 200
+      },
+      "id": "treasure-15"
+     },
+     {
+      "description": "Go to prison.",
+      "effect": {
+       "type": "go-to-prison"
+      },
+      "id": "treasure-16"
+     }
+    ],
+    "currentIndex": 0,
+    "pardonCardHolderId": null
+   },
+   "surprise": {
+    "cards": [
+     {
+      "description": "You have a new investment. Receive $150.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 150
+      },
+      "id": "surprise-0"
+     },
+     {
+      "description": "Advance to Shanghai.",
+      "effect": {
+       "type": "move-to-block",
+       "blockIndex": 24,
+       "collectGo": true
+      },
+      "id": "surprise-1"
+     },
+     {
+      "description": "Pay tax of $20.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "pay",
+       "amount": 20
+      },
+      "id": "surprise-2"
+     },
+     {
+      "description": "Stock agency pays you dividend of $60.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 60
+      },
+      "id": "surprise-3"
+     },
+     {
+      "description": "Have a redesign for your properties. Pay $25 for each house and $100 for each hotel.",
+      "effect": {
+       "type": "repairs",
+       "perHouse": 25,
+       "perHotel": 100
+      },
+      "id": "surprise-4"
+     },
+     {
+      "description": "Take a trip to TLV Airport.",
+      "effect": {
+       "type": "move-to-block",
+       "blockIndex": 5,
+       "collectGo": true
+      },
+      "id": "surprise-5"
+     },
+     {
+      "description": "Your cousin needs some financial assistance. Pay $50.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "pay",
+       "amount": 50
+      },
+      "id": "surprise-6"
+     },
+     {
+      "description": "Received a Pardon card.",
+      "effect": {
+       "type": "get-pardon-card",
+       "deck": "surprise"
+      },
+      "id": "surprise-7"
+     },
+     {
+      "description": "Advance to the next airport.",
+      "effect": {
+       "type": "move-to-next-grouped",
+       "group": "airport"
+      },
+      "id": "surprise-8"
+     },
+     {
+      "description": "Have an adventure to New York.",
+      "effect": {
+       "type": "move-to-block",
+       "blockIndex": 39,
+       "collectGo": true
+      },
+      "id": "surprise-9"
+     },
+     {
+      "description": "From a scholarship you get $100.",
+      "effect": {
+       "type": "money-event",
+       "moneyType": "earn",
+       "amount": 100
+      },
+      "id": "surprise-10"
+     },
+     {
+      "description": "Advance to Venice.",
+      "effect": {
+       "type": "move-to-block",
+       "blockIndex": 11,
+       "collectGo": true
+      },
+      "id": "surprise-11"
+     },
+     {
+      "description": "Go back 3 steps.",
+      "effect": {
+       "type": "move-steps",
+       "steps": -3
+      },
+      "id": "surprise-12"
+     },
+     {
+      "description": "Go to prison.",
+      "effect": {
+       "type": "go-to-prison"
+      },
+      "id": "surprise-13"
+     },
+     {
+      "description": "Advance to Start.",
+      "effect": {
+       "type": "move-to-block",
+       "blockIndex": 0,
+       "collectGo": true
+      },
+      "id": "surprise-14"
+     },
+     {
+      "description": "Advance to the next company.",
+      "effect": {
+       "type": "move-to-next-grouped",
+       "group": "company"
+      },
+      "id": "surprise-15"
+     },
+     {
+      "description": "You lost a bet. Pay each player $50.",
+      "effect": {
+       "type": "pay-each-player",
+       "amount": 50
+      },
+      "id": "surprise-16"
+     }
+    ],
+    "currentIndex": 0,
+    "pardonCardHolderId": null
+   }
+  },
+  "vacationCash": 0,
+  "settings": {
+   "maxPlayers": 4,
+   "canBotsJoin": true,
+   "isPrivate": true,
+   "onlyUsers": false,
+   "payDoubleRentWhenOwnFullSet": false,
+   "vacationCash": false,
+   "auction": false,
+   "noRentPaymentsWhileInPrison": false,
+   "mortgage": false,
+   "startingCash": 1500,
+   "evenBuild": true,
+   "shufflePlayerOrder": true,
+   "teams": {
+    "enabled": false
+   }
+  },
+  "stampedFlags": {
+   "tradeFairnessRules": true
+  },
+  "hostId": "594415a1-543f-4e06-ba20-86b6d859258e",
+  "winnerId": null,
+  "stats": {
+   "turnsCount": 0,
+   "startedAt": 1789759858079,
+   "endedAt": null,
+   "doublesCount": 0,
+   "chatMessagesCount": 0,
+   "tradesCount": 0,
+   "leaderboard": {},
+   "heatMap": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0,
+    "10": 0,
+    "11": 0,
+    "12": 0,
+    "13": 0,
+    "14": 0,
+    "15": 0,
+    "16": 0,
+    "17": 0,
+    "18": 0,
+    "19": 0,
+    "20": 0,
+    "21": 0,
+    "22": 0,
+    "23": 0,
+    "24": 0,
+    "25": 0,
+    "26": 0,
+    "27": 0,
+    "28": 0,
+    "29": 0,
+    "30": 0,
+    "31": 0,
+    "32": 0,
+    "33": 0,
+    "34": 0,
+    "35": 0,
+    "36": 0,
+    "37": 0,
+    "38": 0,
+    "39": 0,
+    "prison": 0
+   },
+   "netWorths": {
+    "594415a1-543f-4e06-ba20-86b6d859258e": [],
+    "0a507fc8-3f3a-4373-8276-bafed83f5c32": [],
+    "b882a258-193d-4c18-99c4-1dd7667e4d64": [],
+    "602ee55f-caac-4886-a85e-df60cd34ebb2": []
+   },
+   "prisonVisits": {},
+   "instrumentation": {
+    "trades": [],
+    "creditorRecoveries": [],
+    "auctions": [],
+    "clock": {
+     "expiredTurns": 0,
+     "expiredTurnsAfterSelfAction": 0,
+     "expiredTurnsWhileOffline": 0
+    }
+   },
+   "allParticipants": [
+    {
+     "id": "594415a1-543f-4e06-ba20-86b6d859258e",
+     "name": "SyncBot",
+     "appearance": "#5A99DA",
+     "isBot": false,
+     "teamId": null,
+     "position": 0,
+     "money": 1500,
+     "bankruptedAt": null,
+     "debtTo": null,
+     "connectivity": "stable",
+     "connectivityKickAt": null,
+     "offlineSince": null,
+     "timedVotekickAt": null,
+     "votekickedAt": null,
+     "clock": {
+      "bankMs": 60000,
+      "autoActedTurns": 0,
+      "turnsTaken": 0,
+      "lastGrantTurnFrom": {}
+     }
+    },
+    {
+     "id": "0a507fc8-3f3a-4373-8276-bafed83f5c32",
+     "name": "Mature Attack",
+     "appearance": "#009688",
+     "isBot": true,
+     "teamId": null,
+     "position": 0,
+     "money": 1500,
+     "bankruptedAt": null,
+     "debtTo": null,
+     "connectivity": "stable",
+     "connectivityKickAt": null,
+     "offlineSince": null,
+     "timedVotekickAt": null,
+     "votekickedAt": null,
+     "clock": {
+      "bankMs": 60000,
+      "autoActedTurns": 0,
+      "turnsTaken": 0,
+      "lastGrantTurnFrom": {}
+     }
+    },
+    {
+     "id": "b882a258-193d-4c18-99c4-1dd7667e4d64",
+     "name": "Decent Taste",
+     "appearance": "#C63FA2",
+     "isBot": true,
+     "teamId": null,
+     "position": 0,
+     "money": 1500,
+     "bankruptedAt": null,
+     "debtTo": null,
+     "connectivity": "stable",
+     "connectivityKickAt": null,
+     "offlineSince": null,
+     "timedVotekickAt": null,
+     "votekickedAt": null,
+     "clock": {
+      "bankMs": 60000,
+      "autoActedTurns": 0,
+      "turnsTaken": 0,
+      "lastGrantTurnFrom": {}
+     }
+    },
+    {
+     "id": "602ee55f-caac-4886-a85e-df60cd34ebb2",
+     "name": "Fair Cold",
+     "appearance": "#7F5ADA",
+     "isBot": true,
+     "teamId": null,
+     "position": 0,
+     "money": 1500,
+     "bankruptedAt": null,
+     "debtTo": null,
+     "connectivity": "stable",
+     "connectivityKickAt": null,
+     "offlineSince": null,
+     "timedVotekickAt": null,
+     "votekickedAt": null,
+     "clock": {
+      "bankMs": 60000,
+      "autoActedTurns": 0,
+      "turnsTaken": 0,
+      "lastGrantTurnFrom": {}
+     }
+    }
+   ]
+  }
+ }
+}
