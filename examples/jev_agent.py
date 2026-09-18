@@ -27,7 +27,7 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from richup.harness import AgentHarness  # noqa: E402
+from richup.harness import AgentHarness
 
 log = logging.getLogger("jev-agent")
 
@@ -105,7 +105,7 @@ class JevAgent:
         if not acts:
             return {"action": "wait"}
         state_txt = self._state_text(obs)
-        criteria = {a: ACTION_HELP.get(a, a) for a in acts + ["wait"]}
+        criteria = {a: ACTION_HELP.get(a, a) for a in [*acts, "wait"]}
         # make the buy criterion concrete — name + price beat an abstraction
         if "buy_property" in acts:
             pos = (s.get("self") or {}).get("position")
@@ -198,7 +198,10 @@ class JevAgent:
                       "criteria": criteria}})
         pick = (answers.get("block") or {}).get("choice", "cancel")
         try:
-            return {"block_index": int(pick)} if pick != "cancel" else {}
+            idx = int(pick)
+            if action in ("mortgage_property", "lift_mortgage"):
+                return {"property_index": idx}
+            return {"block_index": idx}
         except ValueError:
             return {}
 

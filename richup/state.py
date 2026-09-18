@@ -22,7 +22,7 @@ hotelPrice?,bonusType?,cornerType?}
 
 from __future__ import annotations
 
-from typing import Any
+from . import events as ev
 
 OWNED_TYPES = {"city", "airport", "company"}
 
@@ -159,7 +159,6 @@ def summarize(client) -> dict:
     pid = client.self_player_id
     cur = current_player(gs)
     players = []
-    pb = {p.get("id"): p for p in player_list(gs)}
     for p in player_list(gs):
         owned = owned_blocks(gs, p.get("id"))
         players.append({
@@ -268,6 +267,28 @@ def available_actions(client) -> list[str]:
     # trades/property management generally available to players
     if client.is_player and not me_.get("bankruptedAt"):
         acts += ["create_trade", "chat"]
+        # respond to trades targeting us
+        for tr in gs.get("trades") or []:
+            if tr.get("recipientId") == client.self_player_id:
+                acts += ["confirm_trade", "decline_trade"]
+            if tr.get("initiatorId") == client.self_player_id:
+                acts.append("delete_trade")
+        # grant clock when someone asked
+        for e in list(client.events)[-40:]:
+            if e.get("event") == ev.CLOCK_TIME_REQUESTED:
+                pid = (e.get("data") or {}).get("playerId") or (e.get("data") or {}).get("participantId")
+                if pid and pid != client.self_player_id:
+                    acts.append("grant_clock_time")
+                    break
+        # bankruptcy when in debt
+        if me_.get("debtTo"):
+            acts.append("bankrupt")
+        # social actions
+        acts.append("votekick")
+        host_id = gs.get("hostId") or (client.room or {}).get("hostId")
+        if host_id == client.self_player_id:
+            acts.append("host_kick")
+        # property management on owned blocks
         owned = [b for b in gs.get("blocks") or []
                  if b.get("ownerId") == client.self_player_id]
         if owned:
