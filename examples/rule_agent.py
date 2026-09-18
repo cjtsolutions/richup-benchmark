@@ -24,7 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from richup.harness import AgentHarness
+from richup.harness import AgentHarness  # noqa: E402
 
 log = logging.getLogger("rule-agent")
 
@@ -114,11 +114,12 @@ def _landed_price(obs: dict) -> int | None:
 def _cheapest_city(obs: dict) -> int | None:
     s = obs["state"]
     me_id = s["self"]["playerId"]
-    mine = next((p for p in s["players"] if p.get("id") == me_id), None)
-    cities = [pr for pr in (mine or {}).get("properties", []) if pr.get("type") == "city"]
+    cities = [p for p in s["players"]
+              if p["id"] == me_id for p in p["properties"]
+              if p["type"] == "city"]
     if not cities:
         return None
-    cities.sort(key=lambda pr: (pr.get("level") or 0, pr["index"]))
+    cities.sort(key=lambda p: (p.get("level") or 0, p["index"]))
     return cities[0]["index"]
 
 

@@ -202,13 +202,13 @@ indexes / pardon cards.
 
 | Dir | Event | Args / Payload |
 |-----|-------|----------------|
-| emit | `chat:send-message` | raw message string (SPA verified: `sendMessage(t)` → `rr(e,oY,t)`, not wrapped in `{content}`) |
+| emit | `chat:send-message` | `{content}` |
 | on   | `chat:message-received` | `{senderId, content}` |
 | emit | `chat:typing` | — |
 | on   | `chat:participant-typing` | `{participantId}` |
-| emit | `chat:send-team-message` | raw message string |
+| emit | `chat:send-team-message` | `{content}` |
 | on   | `chat:team-message-received` | `{senderId, content}` |
-| emit | `chat:send-admin-message` | raw message string |
+| emit | `chat:send-admin-message` | `{content}` |
 | on   | `chat:admin-message-received` | `{content}` |
 | emit | `admin:kick-participant` | `{participantId, reason}` |
 | on   | `admin:kicked-participant` | `{participantId}` |

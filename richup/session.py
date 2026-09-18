@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
-from typing import Self
+from typing import Any
 
 from .captcha import TurnstileProvider
 from .client import ActionError, RichUpClient
@@ -130,7 +130,7 @@ class GameSession:
             await self._captcha.close()
             self._captcha = None
 
-    async def __aenter__(self) -> Self:
+    async def __aenter__(self) -> "GameSession":
         return self
 
     async def __aexit__(self, *exc) -> None:

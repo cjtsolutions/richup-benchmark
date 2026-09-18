@@ -58,7 +58,7 @@ async def _finish(result: Any = None) -> dict:
     s = _sess()
     try:
         await s.client.sync()
-    except Exception:
+    except Exception:  # noqa: BLE001
         pass
     return {
         "ok": True,
@@ -74,7 +74,7 @@ async def _act(fn, *args, **kwargs) -> dict:
         res = await fn(*args, **kwargs)
     except ActionError as e:
         return {"ok": False, "error": {"code": e.code, "message": str(e)}}
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"ok": False, "error": {"code": type(e).__name__, "message": str(e)}}
     return await _finish(res)
 
@@ -103,7 +103,7 @@ async def create_room(
             is_private=is_private,
             settings={"canBotsJoin": allow_bots} if allow_bots else None,
         )
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         _session = None
         return {"ok": False, "error": {"code": type(e).__name__, "message": str(e)}}
     return {
@@ -133,7 +133,7 @@ async def join_room(room_id: str, name: str, appearance: str = "#5A99DA",
                            captcha_token=captcha_token)
     try:
         await _session.join_existing(room_id)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         _session = None
         return {"ok": False, "error": {"code": type(e).__name__, "message": str(e)}}
     return {
@@ -161,7 +161,7 @@ async def quick_play(max_players: int = 4, name: str = "Agent",
                            captcha_token=captcha_token)
     try:
         room_id = await _session.quick_play(max_players)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         _session = None
         return {"ok": False, "error": {"code": type(e).__name__, "message": str(e)}}
     return {
@@ -187,7 +187,7 @@ async def join_room_by_code(code: str, name: str,
                            captcha_token=captcha_token)
     try:
         room_id = await _session.join_by_code(code)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         _session = None
         return {"ok": False, "error": {"code": type(e).__name__, "message": str(e)}}
     return {
@@ -203,15 +203,11 @@ async def list_lobby_rooms() -> dict:
     if _session is not None:
         rooms = await _session.client.list_lobby_rooms()
     else:
-        c = None
-        try:
-            from .client import RichUpClient
-            c = RichUpClient()
-            await c.init_session()
-            rooms = await c.list_lobby_rooms()
-        finally:
-            if c is not None:
-                await c.close()
+        from .client import RichUpClient
+        c = RichUpClient()
+        await c.init_session()
+        rooms = await c.list_lobby_rooms()
+        await c.close()
     return {"ok": True, "result": rooms}
 
 
@@ -237,7 +233,7 @@ async def start_game(fill_bots: bool = True, min_players: int = 2,
                       wait_s=wait_seconds)
     except ActionError as e:
         return {"ok": False, "error": {"code": e.code, "message": str(e)}}
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         return {"ok": False, "error": {"code": type(e).__name__, "message": str(e)}}
     return await _finish({"started": True})
 

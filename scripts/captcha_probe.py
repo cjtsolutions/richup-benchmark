@@ -5,7 +5,7 @@ import json
 import sys
 
 sys.path.insert(0, ".")
-from richup.client import ActionError, RichUpClient
+from richup.client import RichUpClient, ActionError
 
 
 async def try_join(c, label, **kw):

@@ -19,9 +19,8 @@ import asyncio
 import json
 import logging
 import time
-from collections.abc import Callable
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 
 from . import events as ev
 from . import state as st
@@ -329,7 +328,7 @@ class AgentHarness:
                         else:
                             decision = await asyncio.wait_for(
                                 self.agent.decide(obs), timeout=deadline)
-                    except TimeoutError:
+                    except asyncio.TimeoutError:
                         fallback = self._clock_fallback()
                         decision = {"action": fallback or "wait"}
                         self.timeout_fallbacks += 1
@@ -337,7 +336,7 @@ class AgentHarness:
                             "deadline_s": deadline, "fallback": fallback})
                         log.info("decide() exceeded %.1fs -> %s",
                                  deadline, fallback or "wait")
-                    except Exception as e:
+                    except Exception as e:  # noqa: BLE001
                         log.warning("agent decide() raised: %s", e)
                 action = (decision or {}).get("action", "wait")
                 args = (decision or {}).get("args", {})
@@ -347,7 +346,7 @@ class AgentHarness:
                         result = await dispatch(c, action, args)
                     except ActionError as e:
                         result = {"ok": False, "code": e.code, "error": str(e)}
-                    except Exception as e:
+                    except Exception as e:  # noqa: BLE001
                         result = {"ok": False, "error": str(e)}
                 self.trace.write("action", {
                     "action": action, "args": args, "result": result})

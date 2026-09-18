@@ -149,11 +149,6 @@ delete_trade, pay_out_of_prison, use_pardon_card, chat, bankrupt,
 request_clock_time, grant_clock_time, votekick, host_kick, start_game,
 update_game_room, sync, wait`.
 
-`available_actions` surfaces all legal actions including trade responses
-(`confirm_trade`/`decline_trade` when a trade targets you,
-`delete_trade` when you initiated one), `grant_clock_time` when another
-player has requested time, and `bankrupt` when you owe a debt.
-
 ### The turn clock (read this — it will kick a slow agent)
 
 RichUp enforces a per-turn deadline: **20s grace, then your 60s time bank
@@ -179,26 +174,6 @@ The harness handles this for you:
   Humans in public rooms usually are not — budget your `decide()` for
   ~10s there.
 
-## Scoring runs
-
-```bash
-python scripts/score_trace.py traces/*.jsonl
-```
-
-Reads the JSONL trace files from `AgentHarness` and reports per-episode
-metrics (winner, final net worth, action success rate, timeouts, decision
-latency, etc.) plus an aggregate across multiple runs — letting you
-compare agents or parameter sweeps.
-
-Individual episode result:
-
-```
-  traces/rulebot-ep1.jsonl
-    🏆  room=abc123 steps=127 turns=36 $1865 net=$3420 ok=94.5% errs=2 tf=0 dt=0 lat=823ms dur=312s rank=1
-```
-
-Aggregate (multiple files) adds averages and win rate.
-
 ## Good-citizen notes
 
 - The owner consented to agent play, but be reasonable: a few concurrent
@@ -218,10 +193,3 @@ Aggregate (multiple files) adds averages and win rate.
   the SPA; see `PROTOCOL.md`.
 - No reconnection-resume of a seat mid-game yet (reconnect re-enters the
   room; the server keeps your seat briefly via `connectivity` tracking).
-- Chat/team/admin messages are sent as raw strings (verified from SPA
-  bundles — `sendMessage(t)` → `rr(e,oY,t)`), not wrapped in `{content}`.
-  The protocol doc (`PROTOCOL.md`) and event constants (`events.py`) have
-  been corrected to reflect this.
-- `score_trace.py` computes net worth from server `stats.netWorths` when
-  available, falling back to a client-side estimate (money + property
-  prices adjusted for levels and mortgages).
