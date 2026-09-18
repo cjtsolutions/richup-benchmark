@@ -12,8 +12,8 @@ import logging
 import sys
 
 sys.path.insert(0, ".")
-from richup.session import GameSession
 from richup import state as st
+from richup.session import GameSession
 
 logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s %(levelname)s %(name)s %(message)s")

@@ -1,12 +1,19 @@
 """richup-bench: agent harness + MCP server for richup.io."""
 
-from .client import ActionError, RichUpClient
-from .session import GameSession
-from .harness import AgentHarness, Trace, dispatch
-from .captcha import TurnstileProvider
 from . import events, state
+from .captcha import TurnstileProvider
+from .client import ActionError, RichUpClient
+from .harness import AgentHarness, Trace, dispatch
+from .session import GameSession
 
 __all__ = [
-    "RichUpClient", "ActionError", "GameSession", "AgentHarness",
-    "Trace", "dispatch", "TurnstileProvider", "events", "state",
+    "ActionError",
+    "AgentHarness",
+    "GameSession",
+    "RichUpClient",
+    "Trace",
+    "TurnstileProvider",
+    "dispatch",
+    "events",
+    "state",
 ]

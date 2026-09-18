@@ -7,8 +7,8 @@ import json
 import sys
 
 sys.path.insert(0, ".")
-from richup.client import RichUpClient, ActionError
 from richup.captcha import TurnstileProvider
+from richup.client import ActionError, RichUpClient
 
 
 async def main():
@@ -49,7 +49,7 @@ async def main():
         print("update_game_room failed:", e.code, e)
 
     # wait for bots to fill in
-    for i in range(30):
+    for _ in range(30):
         parts = c.participants or {}
         players = [p for p in parts.values() if p]
         print(f"  waiting players={len(players)}")
@@ -64,7 +64,7 @@ async def main():
         print("start_game failed:", e.code, e)
 
     # play: on our turn roll, maybe buy, end turn. crude loop.
-    for i in range(40):
+    for _ in range(40):
         await asyncio.sleep(1.2)
         if c.game_ended.is_set():
             break

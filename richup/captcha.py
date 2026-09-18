@@ -85,7 +85,7 @@ def _fetch_api_js() -> str:
         try:
             socket.getaddrinfo = _ipv4
             return urllib.request.urlopen(req, timeout=20).read().decode("utf-8")
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             last = e
             time.sleep(0.8)
         finally:
@@ -166,11 +166,11 @@ class TurnstileProvider:
             try:
                 await self.start()
                 break
-            except Exception as e:  # noqa: BLE001
+            except Exception as e:
                 last_boot = e
                 log.warning("turnstile start failed (%d/3): %s", boot + 1, e)
-                await self.close()
-                await asyncio.sleep(1.5)
+            await self.close()
+            await asyncio.sleep(1.5)
         else:
             raise RuntimeError(f"turnstile provider failed to start: {last_boot}")
         async with self._lock:
@@ -184,7 +184,7 @@ class TurnstileProvider:
                     if token and isinstance(token, str):
                         return token
                     last_err = RuntimeError("turnstile returned empty token")
-                except Exception as e:  # noqa: BLE001
+                except Exception as e:
                     last_err = e
                     log.warning("token mint attempt %d failed: %s", attempt + 1, e)
             raise RuntimeError(f"turnstile token mint failed: {last_err}")
@@ -195,7 +195,7 @@ class TurnstileProvider:
                 await self._browser.close()
             if self._pw:
                 await self._pw.stop()
-        except Exception:  # noqa: BLE001
+        except Exception:
             pass
         self._browser = self._ctx = self._page = self._pw = None
         self._started.clear()

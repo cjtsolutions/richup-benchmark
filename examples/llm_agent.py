@@ -30,7 +30,7 @@ import httpx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from richup.harness import AgentHarness  # noqa: E402
+from richup.harness import AgentHarness
 
 log = logging.getLogger("llm-agent")
 
@@ -86,7 +86,7 @@ _ALIASES = {
     "delete_trade": "delete_trade",
 }
 
-_JSON_RE = re.compile(r"\{.*\}", re.S)
+_JSON_RE = re.compile(r"\{.*\}", re.DOTALL)
 
 
 class LLMAgent:
@@ -120,7 +120,6 @@ class LLMAgent:
         return self._http
 
     async def decide(self, obs: dict) -> dict:
-        s = obs["state"]
         user = self._prompt(obs)
         msgs = [{"role": "system", "content": SYSTEM}]
         msgs += self._history[-self.keep_history:] if self.keep_history else []
@@ -228,7 +227,10 @@ async def main() -> None:
                     help="matchmake a public N-player room")
     ap.add_argument("--appearance", default="#5A99DA")
     ap.add_argument("--trace", default=None, help="JSONL trace path")
-    ap.add_argument("--public", dest="private", action="store_false")
+    ap.add_argument("--private", dest="private", action="store_true", default=True,
+                    help="create a private room (default)")
+    ap.add_argument("--public", dest="private", action="store_false",
+                    help="create a public room (anyone can join)")
     ap.add_argument("--decision-timeout", type=float, default=60.0,
                     help="max seconds per decide() before the safe fallback")
     ap.add_argument("--start-timeout", type=float, default=1800,
